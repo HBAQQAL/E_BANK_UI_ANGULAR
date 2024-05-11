@@ -1,0 +1,61 @@
+<div
+  class="flex flex-col items-center justify-center gap-7 bg-base-200 py-20 px-20"
+>
+  <ng-container *ngIf="customers | async as customers; else failure">
+    <div class="overflow-x-auto shadow-lg">
+      <div class="flex items-center justify-between py-10 px-4">
+        <h1 class="text-2xl font-bold text-center">Customers</h1>
+        <form [formGroup]="searchFromGroup" (ngSubmit)="searchByName()">
+          <label class="input input-bordered flex items-center gap-2 pr-0">
+            <input
+              type="text"
+              class="grow"
+              placeholder="Search"
+              formControlName="searchTerm"
+            />
+            <button type="submit" class="btn btn-square px-2 w-fit">
+              Search
+            </button>
+          </label>
+        </form>
+        <a class="btn btn-square px-2 w-fit" routerLink="/addcustomer">
+          Add Customer
+        </a>
+      </div>
+      <table class="table table-zebra w-fit">
+        <thead>
+          <tr>
+            <th>
+              <label>
+                <input type="checkbox" class="checkbox" />
+              </label>
+            </th>
+            <th class="mx-auto">ID</th>
+            <th>NAME</th>
+            <th>EMAIL</th>
+          </tr>
+        </thead>
+        <tbody *ngFor="let c of customers">
+          <tr>
+            <th>
+              <label>
+                <input type="checkbox" class="checkbox" />
+              </label>
+            </th>
+            <td class="px-10">{{ c.id }}</td>
+            <td class="px-10">{{ c.name }}</td>
+            <td class="px-10">{{ c.email }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </ng-container>
+  <ng-template #failure>
+    <ng-container *ngIf="errorMessage; else loading">
+      <div class="text-2xl text-red-500">{{ errorMessage }}</div>
+    </ng-container>
+    <ng-template #loading>
+      <div class="text-2xl text-blue-500">Loading...</div>
+    </ng-template>
+  </ng-template>
+</div>

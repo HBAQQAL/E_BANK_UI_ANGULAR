@@ -1,0 +1,1 @@
+"# E_BANK_UI_ANGULAR"  initgit add README.mdgit commit -m "first commit"git branch -M maingit remote add origin https://github.com/HBAQQAL/E_BANK_UI_ANGULAR.gitgit push -u origin main

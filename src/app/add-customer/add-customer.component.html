@@ -1,0 +1,23 @@
+<div class="flex items-center justify-center w-[100vw] h-[80vh] bg-white">
+  <form [formGroup]="addCustomerForm" (ngSubmit)="addCustomer()">
+    <label class="input input-bordered flex items-center gap-2">
+      Name
+      <input
+        type="text"
+        class="grow"
+        placeholder="Daisy"
+        formControlName="name"
+      />
+    </label>
+    <label class="input input-bordered flex items-center gap-2">
+      Email
+      <input
+        type="text"
+        class="grow"
+        placeholder="daisy@site.com"
+        formControlName="email"
+      />
+    </label>
+    <button class="btn btn-primary">Add Customer</button>
+  </form>
+</div>
